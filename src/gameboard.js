@@ -22,41 +22,48 @@ const gameboard = function (xLenght,yLenght) {
     if(ylen>16){ylen=16;}
 
     let gameBoard = Array(ylen).fill(Array(xlen).fill(FREE));
+    let gameShips=[];
 
     let data=0;
 
-    function placeShip(xShip,yShip,size,orientation){
-        if(size==1){
-            this.gameBoard[xShip][yShip]=OCCUPIED;
-            return true;
-        }
+    function placeShip(xShip,yShip,size,orientation=VERTICAL){
+
+        let localShip= new ship(size);
+        
+
         
         if(orientation==HORIZONTAL){
-            if(size+xShip>this.xLenght){
+            if(size+xShip>xLenght){
                 return false;
             }else{
                 for (let index=0;index<size;index++)
                 {
-                    this.gameBoard[xShip+index][yShip]=OCCUPIED;
+                    gameBoard[xShip+index][yShip]=OCCUPIED;
+                    this.gameShips.push(localShip);
+                    return true;
                 }
             }
         }
-
-        if(orientation==HORIZONTAL){
-            if(size+xShip>this.xLenght){
+        if(orientation==VERTICAL){
+            if(size+yShip>yLenght){
                 return false;
             }else{
                 for (let index=0;index<size;index++)
                 {
-                    this.gameBoard[xShip+index][yShip]=OCCUPIED;
+                    gameBoard[xShip][yShip+index]=OCCUPIED;
+                    this.gameShips.push(localShip);
+                    return true;
                 }
             }
         }
-
     }
 
     return{
         data,        
+        gameShips,
+        gameBoard,
+        placeShip
+
     }
 };
 module.exports=gameboard;
