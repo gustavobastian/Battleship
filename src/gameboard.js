@@ -1,5 +1,11 @@
 const ship = require("./ship")
 
+//usefull definitions
+const OCCUPIED="O";
+const FREE="F";
+const VERTICAL="V";
+const HORIZONTAL="F";
+
 /**
  * 
  * @param {*} xLenght = lenght of x axis of the board
@@ -7,8 +13,7 @@ const ship = require("./ship")
  * @returns 
  */
 
-const OCCUPIED="O";
-const FREE="F";
+
 
 const gameboard = function (xLenght,yLenght) {
     let xlen=xLenght;
@@ -20,23 +25,38 @@ const gameboard = function (xLenght,yLenght) {
 
     let data=0;
 
-    function printGameBoard() {
-        let line=""
-        gameBoard.forEach(element => {
-            
-                element.forEach(elementLocal =>{
-                    line+="|"+elementLocal
-                });
-            line+="|\n"            
-        });
-        console.log(line);
+    function placeShip(xShip,yShip,size,orientation){
+        if(size==1){
+            this.gameBoard[xShip][yShip]=OCCUPIED;
+            return true;
+        }
+        
+        if(orientation==HORIZONTAL){
+            if(size+xShip>this.xLenght){
+                return false;
+            }else{
+                for (let index=0;index<size;index++)
+                {
+                    this.gameBoard[xShip+index][yShip]=OCCUPIED;
+                }
+            }
+        }
+
+        if(orientation==HORIZONTAL){
+            if(size+xShip>this.xLenght){
+                return false;
+            }else{
+                for (let index=0;index<size;index++)
+                {
+                    this.gameBoard[xShip+index][yShip]=OCCUPIED;
+                }
+            }
+        }
+
     }
 
-    
-
     return{
-        data,
-        printGameBoard
+        data,        
     }
 };
 module.exports=gameboard;
