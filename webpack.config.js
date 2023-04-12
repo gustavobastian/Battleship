@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const lang = "EN";
+
 
 module.exports = {
     mode: 'development',
@@ -8,9 +10,12 @@ module.exports = {
     },
     
     plugins: [
-            /*new webpack.ProgressPlugin(),*/
+            /*new webpack.ProgressPlugin(),*/            
             new HtmlWebpackPlugin({                 
-                title:"BattleShip App" 
+                title:"BattleShip App",
+                lang: lang,
+                template: 'src/index.html',
+
             }),
     ],
     output: {
