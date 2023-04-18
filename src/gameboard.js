@@ -1,7 +1,7 @@
 const ship = require("./ship")
 
 //usefull definitions
-const OCCUPIED="O";
+
 const FREE="F";
 const MARK="X";
 const WATER="-";
@@ -45,7 +45,7 @@ const gameboard = function (xLenght,yLenght) {
                 return false;
             }
             for (let index=0;index<size;index++){                
-                if(gameBoard[xShip+index][yShip]==OCCUPIED){
+                if(gameBoard[xShip+index][yShip]!=FREE){
                     return false;
                     }                                            
             }
@@ -55,7 +55,7 @@ const gameboard = function (xLenght,yLenght) {
                 return false;
             }
             for (let index=0;index<size;index++){
-                if(gameBoard[xShip][yShip+index]==OCCUPIED){
+                if(gameBoard[xShip][yShip+index]!=FREE){
                     return false;
                 }
                 
@@ -86,14 +86,16 @@ const gameboard = function (xLenght,yLenght) {
         if(checkSpace(xShip,yShip,size,orientation)===false){
             return false;
         }
+        this.gameShips.push(localShip);
+        let value=localShip.lenght - 1;
         //Horizontal (placement from left to right)
         
         if(orientation==HORIZONTAL){                        
             for (let index=0;index<long;index++)
             {
-                gameBoard[xShip+index][yShip]=OCCUPIED;                  
+                gameBoard[xShip+index][yShip]=value;                  
             }
-            this.gameShips.push(localShip);
+            
             return true;
         }
         //Vertical (placement from bottom to top)
@@ -101,9 +103,9 @@ const gameboard = function (xLenght,yLenght) {
             let localLine=gameBoard[xShip]                          
             for (let index=0;index<long;index++)
             {   
-                localLine[yShip+index]=OCCUPIED;                                
+                localLine[yShip+index]=value;                                
             }          
-            this.gameShips.push(localShip);
+            
             return true;    
         }
         return true;
