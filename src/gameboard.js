@@ -15,8 +15,6 @@ const HORIZONTAL="H";
  * @returns 
  */
 
-
-
 const gameboard = function (xLenght,yLenght) {
     let xlen=xLenght;
     let ylen=yLenght;
@@ -33,8 +31,7 @@ const gameboard = function (xLenght,yLenght) {
         gameBoard[d]=[];
         for(let i=0;i<yLenght;i++){
             gameBoard[d][i]=FREE;
-        }
-        
+        }        
     }
     
 
@@ -65,7 +62,7 @@ const gameboard = function (xLenght,yLenght) {
             return true;
         }
     }
-
+/*
     function printBoard(){
         let output="";
         
@@ -80,7 +77,7 @@ const gameboard = function (xLenght,yLenght) {
         
         console.log(output)
         
-    }
+    }*/
 
     function placeShip(xShip,yShip,size,orientation=VERTICAL){        
         let long=parseInt(size);        
@@ -152,6 +149,7 @@ const gameboard = function (xLenght,yLenght) {
         gameShips,
         checkShips,
         gameBoard,
+    //    printBoard,
         getMissed,
         receiveAttack,
         placeShip

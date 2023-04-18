@@ -5,8 +5,20 @@ const lang = "EN";
 
 module.exports = {
     mode: 'development',
-    entry: {
-            import:'./src/main.js'
+    entry: {        
+        ui:{
+            import:'./src/uI.js',
+        },
+        gameboard:{
+            import:'./src/gameboard.js',
+        },
+        ship:{
+            import:'./src/ship.js',
+        }
+        ,
+        main:{
+            import:'./src/main.js',
+        }
     },
     
     plugins: [

@@ -1,8 +1,5 @@
 import './style.css'; 
+let ui =require("./uI.js")
 
-console.log("here 2")
-let mainContent=document.createElement('div')
-mainContent.id="mainContent"
-mainContent.className="mainContent";
-
-document.body.appendChild(mainContent);
+let component=ui();
+document.body.appendChild(component);
