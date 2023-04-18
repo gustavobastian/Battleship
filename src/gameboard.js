@@ -24,9 +24,10 @@ const gameboard = function (xLenght,yLenght) {
     if(ylen>16){ylen=16;}
 
     //generating board
-    //let gameBoard = Array(ylen).fill(Array(xlen).fill(FREE));
+    
     let gameBoard=[];    
-    let line = [];
+    let missedShots=[];
+
     for(let d=0;d<xLenght;d++){
         gameBoard[d]=[];
         for(let i=0;i<yLenght;i++){
@@ -111,10 +112,23 @@ const gameboard = function (xLenght,yLenght) {
         return true;
     }
 
+    function receiveAttack(x,y){
+            if(gameBoard[x][y]=="F"){
+                missedShots.push([x,y]);
+                return "missed"
+            }
+            
+    }
+
+    function getMissed(){
+        return missedShots.length
+    }
     return{
         data,        
         gameShips,
         gameBoard,
+        getMissed,
+        receiveAttack,
         placeShip
 
     }

@@ -89,3 +89,10 @@ test('placing 1 ships vertical where another is already placed(V)', () => {
   expect(mygameboad.gameBoard[2][0]).toBe("F");    
   expect(mygameboad.placeShip(0,1,1,"V")).toBe(false);
 });
+
+test('attacking to a false position', () => {
+  let mygameboad= new gameboard(4,4)      
+  expect(mygameboad.placeShip(0,0,3,"V")).toBe(true);
+  expect(mygameboad.receiveAttack(2,2)).toBe("missed");
+  expect(mygameboad.getMissed()).toBe(1);
+});
