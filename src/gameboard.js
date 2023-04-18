@@ -1,4 +1,4 @@
-const ship = require("./ship")
+const Ship = require("./ship")
 
 //usefull definitions
 
@@ -27,6 +27,7 @@ const gameboard = function (xLenght,yLenght) {
     
     let gameBoard=[];    
     let missedShots=[];
+    let gameShips=[];
 
     for(let d=0;d<xLenght;d++){
         gameBoard[d]=[];
@@ -36,7 +37,7 @@ const gameboard = function (xLenght,yLenght) {
         
     }
     
-    let gameShips=[];
+
 
     let data=0;
 
@@ -82,13 +83,18 @@ const gameboard = function (xLenght,yLenght) {
     }
 
     function placeShip(xShip,yShip,size,orientation=VERTICAL){        
-        let localShip= new ship(size);
         let long=parseInt(size);        
+        let localShip= new Ship(long);
+        
         if(checkSpace(xShip,yShip,size,orientation)===false){
             return false;
         }
+
         this.gameShips.push(localShip);
-        let value=localShip.lenght - 1;
+        
+        let value=parseInt(this.gameShips.length-1);
+
+        
         //Horizontal (placement from left to right)
         
         if(orientation==HORIZONTAL){                        
@@ -116,6 +122,13 @@ const gameboard = function (xLenght,yLenght) {
             if(gameBoard[x][y]=="F"){
                 missedShots.push([x,y]);
                 return "missed"
+            }
+            else{
+                let shipDamaged=parseInt(gameBoard[x][y]);                
+                gameBoard[x][y]="X";
+                this.gameShips[shipDamaged].hit();               
+                
+                return "hit"
             }
             
     }
