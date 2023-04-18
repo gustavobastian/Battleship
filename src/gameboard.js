@@ -126,8 +126,7 @@ const gameboard = function (xLenght,yLenght) {
             else{
                 let shipDamaged=parseInt(gameBoard[x][y]);                
                 gameBoard[x][y]="X";
-                this.gameShips[shipDamaged].hit();               
-                
+                this.gameShips[shipDamaged].hit();                               
                 return "hit"
             }
             
@@ -136,9 +135,22 @@ const gameboard = function (xLenght,yLenght) {
     function getMissed(){
         return missedShots.length
     }
+
+    function checkShips(){
+        let status=0;
+        this.gameShips.forEach(element => {
+            if(element.isSunk()===false)
+            {
+                status=1;
+            }
+        });
+        return status==0;
+    }
+
     return{
         data,        
         gameShips,
+        checkShips,
         gameBoard,
         getMissed,
         receiveAttack,

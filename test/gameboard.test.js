@@ -103,3 +103,19 @@ test('hit a ship', () => {
   expect(mygameboad.receiveAttack(0,2)).toBe("hit");
   expect(mygameboad.getMissed()).toBe(0);
 });
+
+test('hit a ship, check board has a ship not sunk', () => {
+  let mygameboad= new gameboard(4,4)      
+  expect(mygameboad.placeShip(0,0,3,"V")).toBe(true);
+  expect(mygameboad.receiveAttack(0,2)).toBe("hit");
+  expect(mygameboad.checkShips()).toBe(false);
+});
+
+test('hit a ship, check board has all ships sunk ', () => {
+  let mygameboad= new gameboard(4,4)      
+  expect(mygameboad.placeShip(0,0,3,"V")).toBe(true);
+  expect(mygameboad.receiveAttack(0,2)).toBe("hit");
+  expect(mygameboad.receiveAttack(0,1)).toBe("hit");
+  expect(mygameboad.receiveAttack(0,0)).toBe("hit");
+  expect(mygameboad.checkShips()).toBe(true);
+});
