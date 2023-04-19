@@ -9,20 +9,34 @@ const UI = function () {
     header.innerText="Battleship GAME";
     contentElement.appendChild(header);
 
-    let playerZone=document.createElement("div");
-    const newLocal = "playerZone";
-    playerZone.className=newLocal;    
-    
+    let playerForm=document.createElement("div");    
+    playerForm.className="playerForm";
 
+    let labelName=document.createElement("label")
+    labelName.className="playerName"; 
+    labelName.innerText="Player:"   
+    playerForm.appendChild(labelName);
+    let inputName=document.createElement("input")
+    inputName.className="inputName";    
+    playerForm.appendChild(inputName);
+    let resetGame=document.createElement("button")
+    resetGame.className="resetGame";
+    resetGame.innerText="Reset";        
+    playerForm.appendChild(resetGame);
+
+    contentElement.appendChild(playerForm);
+
+    let playerZone=document.createElement("div");
+    playerZone.className= "playerZone";
     let player1=document.createElement("div");
-    player1.className="player1-zone";        
+    player1.id="player1-zone";        
     playerZone.appendChild(player1);
-    
     let player2=document.createElement("div");
-    player2.className="player2-zone";        
+    player2.id="player2-zone";        
     playerZone.appendChild(player2);
     contentElement.appendChild(playerZone);
     return contentElement;
 }
+
 
 module.exports=UI

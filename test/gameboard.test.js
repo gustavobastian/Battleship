@@ -65,7 +65,7 @@ test.skip('placing 1 ships horizontal in 1,0 size 3', () => {
 });
 
 
-test.skip('placing 1 ships horizontal where another is already placed', () => {
+test('placing 1 ships horizontal where another is already placed', () => {
   let mygameboad= new gameboard(4,4)      
   expect(mygameboad.placeShip(1,0,3,"H")).toBe(true);
   expect(mygameboad.gameShips.length).toBe(1);
@@ -78,7 +78,7 @@ test.skip('placing 1 ships horizontal where another is already placed', () => {
 });
 
 
-test.skip('placing 1 ships vertical where another is already placed(V)', () => {
+test('placing 1 ships vertical where another is already placed(V)', () => {
   let mygameboad= new gameboard(4,4)      
   expect(mygameboad.placeShip(0,0,3,"V")).toBe(true);
   expect(mygameboad.gameShips.length).toBe(1);
@@ -109,6 +109,7 @@ test('hit a ship, check board has a ship not sunk', () => {
   expect(mygameboad.placeShip(0,0,3,"V")).toBe(true);
   expect(mygameboad.receiveAttack(0,2)).toBe("hit");
   expect(mygameboad.checkShips()).toBe(false);
+  mygameboad.printBoard();
 });
 
 test('hit a ship, check board has all ships sunk ', () => {
@@ -118,4 +119,5 @@ test('hit a ship, check board has all ships sunk ', () => {
   expect(mygameboad.receiveAttack(0,1)).toBe("hit");
   expect(mygameboad.receiveAttack(0,0)).toBe("hit");
   expect(mygameboad.checkShips()).toBe(true);
+    mygameboad.printBoard();
 });

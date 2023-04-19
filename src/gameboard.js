@@ -62,7 +62,7 @@ const gameboard = function (xLenght,yLenght) {
             return true;
         }
     }
-/*
+
     function printBoard(){
         let output="";
         
@@ -77,7 +77,7 @@ const gameboard = function (xLenght,yLenght) {
         
         console.log(output)
         
-    }*/
+    }
 
     function placeShip(xShip,yShip,size,orientation=VERTICAL){        
         let long=parseInt(size);        
@@ -149,7 +149,7 @@ const gameboard = function (xLenght,yLenght) {
         gameShips,
         checkShips,
         gameBoard,
-    //    printBoard,
+        printBoard,
         getMissed,
         receiveAttack,
         placeShip

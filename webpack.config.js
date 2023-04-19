@@ -14,11 +14,14 @@ module.exports = {
         },
         ship:{
             import:'./src/ship.js',
-        }
-        ,
+        },
         main:{
             import:'./src/main.js',
+        },
+        UiGrid:{
+            import:'./src/ui-grid.js',
         }
+        
     },
     
     plugins: [
