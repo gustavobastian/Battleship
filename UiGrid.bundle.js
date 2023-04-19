@@ -9,13 +9,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/uI.js":
-/*!*******************!*\
-  !*** ./src/uI.js ***!
-  \*******************/
+/***/ "./src/ui-grid.js":
+/*!************************!*\
+  !*** ./src/ui-grid.js ***!
+  \************************/
 /***/ ((module) => {
 
-eval("const UI = function () {\n  console.log(\"here\");\n  let contentElement = document.createElement('div');\n  contentElement.className = \"mainContent\";\n  let header = document.createElement(\"div\");\n  header.className = \"Header\";\n  header.innerText = \"Battleship GAME\";\n  contentElement.appendChild(header);\n  let playerForm = document.createElement(\"div\");\n  playerForm.className = \"playerForm\";\n  let labelName = document.createElement(\"label\");\n  labelName.className = \"playerName\";\n  labelName.innerText = \"Player:\";\n  playerForm.appendChild(labelName);\n  let inputName = document.createElement(\"input\");\n  inputName.className = \"inputName\";\n  playerForm.appendChild(inputName);\n  let resetGame = document.createElement(\"button\");\n  resetGame.className = \"resetGame\";\n  resetGame.innerText = \"Reset\";\n  playerForm.appendChild(resetGame);\n  contentElement.appendChild(playerForm);\n  let playerZone = document.createElement(\"div\");\n  playerZone.className = \"playerZone\";\n  let player1 = document.createElement(\"div\");\n  player1.id = \"player1-zone\";\n  playerZone.appendChild(player1);\n  let player2 = document.createElement(\"div\");\n  player2.id = \"player2-zone\";\n  playerZone.appendChild(player2);\n  contentElement.appendChild(playerZone);\n  return contentElement;\n};\nmodule.exports = UI;\n\n//# sourceURL=webpack://battleship/./src/uI.js?");
+eval("function UiGrid() {\n  let gridElement = document.getElementById(\"player1-zone\");\n  gridElement.className = \"gameGrid\";\n  for (let i = 0; i < 100; i++) {\n    let elementLocal = document.createElement(\"button\");\n    elementLocal.id = \"button_\" + i;\n    elementLocal.className = \"innerElement\";\n    gridElement.appendChild(elementLocal);\n  }\n  let gridElementComp = document.getElementById(\"player2-zone\");\n  gridElementComp.className = \"gameGrid\";\n  for (let i = 0; i < 100; i++) {\n    let elementLocal = document.createElement(\"div\");\n    elementLocal.id = \"button_\" + i;\n    elementLocal.className = \"innerElementComp\";\n    gridElementComp.appendChild(elementLocal);\n  }\n  return;\n}\nmodule.exports = UiGrid;\n\n//# sourceURL=webpack://battleship/./src/ui-grid.js?");
 
 /***/ })
 
@@ -50,7 +50,7 @@ eval("const UI = function () {\n  console.log(\"here\");\n  let contentElement =
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/uI.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/ui-grid.js");
 /******/ 	
 /******/ })()
 ;
