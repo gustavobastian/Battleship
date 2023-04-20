@@ -1,14 +1,19 @@
 let player=require("./player.js")
 
 const uiGrid=function UiGrid() {
-
-    const playerComputer=player("computer",10,10);
-    playerComputer.fillingBoard();
-    const playerHuman=player("playerName",10,10);
-    playerHuman.fillingBoard();
-
+    let playerComputer;
+    let playerHuman;
+    
+    function init(){
+        playerComputer=player("computer",10,10);
+        playerComputer.fillingBoard();
+        playerHuman=player("playerName",10,10);
+        playerHuman.fillingBoard();
+    }
     function generateUI(){
+        this.init();
         let gridElement = document.getElementById("player1-zone");
+        gridElement.innerHTML="";
         gridElement.className = "gameGrid";
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
@@ -22,6 +27,7 @@ const uiGrid=function UiGrid() {
 
         let gridElementComp = document.getElementById("player2-zone");
         gridElementComp.className = "gameGrid";
+        gridElementComp.innerHTML="";
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
                 let elementLocal=document.createElement("div");        
@@ -55,6 +61,7 @@ const uiGrid=function UiGrid() {
         }
     }
     return {
+        init,
         generateUI,
         addListener
 

@@ -21,6 +21,7 @@ const UI = function () {
     playerForm.appendChild(inputName);
     let resetGame=document.createElement("button")
     resetGame.className="resetGame";
+    resetGame.id="resetGame";
     resetGame.innerText="Reset";        
     playerForm.appendChild(resetGame);
 
