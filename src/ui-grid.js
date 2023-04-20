@@ -3,7 +3,9 @@ let player=require("./player.js")
 const uiGrid=function UiGrid() {
 
     const playerComputer=player("computer",10,10);
+    playerComputer.fillingBoard();
     const playerHuman=player("playerName",10,10);
+    playerHuman.fillingBoard();
 
     function generateUI(){
         let gridElement = document.getElementById("player1-zone");
@@ -42,9 +44,12 @@ const uiGrid=function UiGrid() {
                     console.log("button "+i+"|"+j +" pressed!");
                     let elemenComp=document.getElementById("CompEl_"+i+"_"+j);        
                    // console.log(playerHuman.playturn(playerComputer,i,j))
-                    elemenComp.style.cssText="background:red;";
+                    
                     //elemenComp.innerText="X";
-                    //console.log(playerHuman.playturn(playerComputer.playerBoard,i,j))
+                    if(playerHuman.playturn(playerComputer,i,j) == "hit")
+                        {elemenComp.style.cssText="background:red;";}
+                    else    
+                        {elemenComp.style.cssText="background:gray;";}
                 })
             }
         }
