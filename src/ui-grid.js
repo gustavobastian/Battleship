@@ -49,7 +49,6 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
     return {        
         generateUI,
         addListener
-
     };
 }
 

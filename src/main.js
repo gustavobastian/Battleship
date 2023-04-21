@@ -5,8 +5,11 @@ let player=require("./player.js")
 
 
 let winner=0;
+
+let currentTurn="H";
+
 //adding main component
-let component=ui();
+let component=ui("Player");
 document.body.appendChild(component);
 let movementsStack=[];
 //
@@ -36,15 +39,16 @@ let delayInMilliseconds = 1000; //1 second
 function checkGame(){    
     
     let localwinner=0;
-    if(playerHuman.playerBoard.checkShips()==true){
+    if(playerHuman.playerBoard.checkShips()===true){
         localwinner=1;
         }
-    if(playerComputer.playerBoard.checkShips()==true){
+    if(playerComputer.playerBoard.checkShips()===true){
         localwinner=2;
         }    
         
     return localwinner;    
 }
+
 window.requestAnimationFrame(gameLoop);
 
 let alert=0;
@@ -53,17 +57,33 @@ function gameLoop() {
     if(movementsStack.length>0){
         let value=[];
         value=movementsStack.pop();
+        console.log("currentTurrn:"+currentTurn);
         console.log(value[0]);
         console.log(value[1]);
-        let elemenComp=document.getElementById("CompEl_"+value[0]+"_"+value[1]);                            
-        let returnedValue=playerHuman.playturn(playerComputer,value[0],value[1]); 
-        if(returnedValue==="hit")
-            {elemenComp.style.cssText="background:red;";}
-        else    
-            {elemenComp.style.cssText="background:gray;";}
-
-       // console.log(playerComputer.playturn(playerHuman,0,0));    
+        if(currentTurn!='H'){
+            console.log("here")            
         }
+        else{
+            if(value[2]=='H')
+            {
+                currentTurn='C';
+                console.log("currenturn inside:"+currentTurn)
+                let elemenComp=document.getElementById("CompEl_"+value[0]+"_"+value[1]);                            
+                let returnedValue=playerHuman.playturn(playerComputer,value[0],value[1]); 
+                if(returnedValue==="hit")
+                    {elemenComp.style.cssText="background:red;";}
+                else    
+                    {elemenComp.style.cssText="background:gray;";}
+                
+                setTimeout(function(){
+                    // console.log(playerComputer.playturn(playerHuman,0,0))
+                        currentTurn='H';
+                        console.log("timeout:"+currentTurn)
+                        return;
+                }, 10000);                        
+            }
+            }
+        }    
     winner=checkGame();
     if(winner!=0){
         winner=0;

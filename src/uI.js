@@ -1,5 +1,5 @@
 
-const UI = function () {
+const UI = function (turn) {
     console.log("here")
     let contentElement=document.createElement('div') 
     contentElement.className="mainContent";
@@ -26,6 +26,12 @@ const UI = function () {
     playerForm.appendChild(resetGame);
 
     contentElement.appendChild(playerForm);
+
+    let lineTurn=document.createElement("div");    
+    lineTurn.className="lineTurn";
+    lineTurn.innerHTML="<p>Turn:"+turn+"</p>"
+    contentElement.appendChild(lineTurn);
+
 
     let playerZone=document.createElement("div");
     playerZone.className= "playerZone";

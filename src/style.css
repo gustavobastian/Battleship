@@ -94,3 +94,11 @@ button{
     border:solid;
     background:rgb(1, 179, 179);
 }
+.lineTurn{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: large;
+    font-weight: bold;
+    color:orange;
+}

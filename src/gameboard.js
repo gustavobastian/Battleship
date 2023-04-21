@@ -134,14 +134,21 @@ const gameboard = function (xLenght,yLenght) {
     }
 
     function checkShips(){
-        let status=0;
-        this.gameShips.forEach(element => {
-            if(element.isSunk()===false)
+        
+        let sunkShips=0;
+        let allShips=this.gameShips.length;
+        
+        if(this.gameShips.length==0){
+            return false;
+        }
+
+       this.gameShips.forEach(element => {
+            if(element.isSunk()===true)
             {
-                status=1;
+                sunkShips++;             
             }
         });
-        return status==0;
+        return sunkShips==allShips;
     }
 
     return{
