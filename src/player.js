@@ -40,31 +40,34 @@ const Player = function (name,xboard,yboard) {
         
         if(this.playerName=="Computer"){
             let status=false;
+            let x=0;
+            let y=0;            
             do{//check is a new move
-                let x= Math.floor(Math.random()*opponent.playerBoard.xlen);
-                let y= Math.floor(Math.random()*opponent.playerBoard.ylen);
+                x= parseInt(Math.floor(Math.random()*opponent.playerBoard.xlen));
+                y= parseInt(Math.floor(Math.random()*opponent.playerBoard.ylen));                
                 previusMoves.forEach(element => {
                    if((element[0]==x)&&element[1]==y){
-                    status=false;
+                    status=true;
                    }   
                    else{
-                    status=true;
+                    status=false;
                    }
                 });
-            } while(status===false)
+            } while(status===true)
 
-            opponent.playerBoard.receiveAttack(x,y);
+            
             previusMoves.push([x,y]);
-            console.log(this.previusMoves);            
+            
+            return [opponent.playerBoard.receiveAttack(x,y),x,y];
         }
         else{
-            return (opponent.playerBoard.receiveAttack(xValue,yValue));
+            return [(opponent.playerBoard.receiveAttack(xValue,yValue)),xValue,yValue];
         }
     }
 
     return{
         playerName,   
-        playerBoard,
+        playerBoard,        
         getGameBoard,     
         fillingBoard,
         playturn

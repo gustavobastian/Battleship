@@ -116,7 +116,9 @@ const gameboard = function (xLenght,yLenght) {
     }
 
     function receiveAttack(x,y){
-            if(gameBoard[x][y]=="F"){
+        console.log(x)
+        console.log(y)
+            if(gameBoard[x][y]==='F'){
                 missedShots.push([x,y]);
                 return "missed"
             }
@@ -154,6 +156,8 @@ const gameboard = function (xLenght,yLenght) {
     return{
         data,        
         gameShips,
+        xlen,
+        ylen,
         checkShips,
         gameBoard,
         printBoard,

@@ -9,7 +9,7 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
                 let elementLocalPlayer=document.createElement("div");        
-                elementLocalPlayer.id="button_"+i+"_"+j;
+                elementLocalPlayer.id="PlayerEl_"+i+"_"+j;
                 elementLocalPlayer.className="innerElementPlayer";
                 
                /* if(playerHuman.game)*/
