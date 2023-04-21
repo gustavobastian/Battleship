@@ -121,9 +121,9 @@ const gameboard = function (xLenght,yLenght) {
                 return "missed"
             }
             else{
-                let shipDamaged=parseInt(gameBoard[x][y]);                
-                gameBoard[x][y]="X";
-                this.gameShips[shipDamaged].hit();                               
+                let shipDamaged=parseInt(gameBoard[x][y]);                                
+                let localShip=this.gameShips[shipDamaged]                
+                localShip.hit();                               
                 return "hit"
             }
             

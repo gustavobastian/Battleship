@@ -34,20 +34,14 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
         //adding listeners
                 
     }
-    function addListener(){
+    function addListener(movementsStack){
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
                 let elementLocal=document.getElementById("CompEl_"+i+"_"+j);        
                 elementLocal.addEventListener("click",function(e){
                     console.log("button "+i+"|"+j +" pressed!");
-                    let elemenComp=document.getElementById("CompEl_"+i+"_"+j);        
+                    movementsStack.push([i,j,"H"]);
                     
-                    if(playerHuman.playturn(playerComputer,i,j) == "hit")
-                        {elemenComp.style.cssText="background:red;";}
-                    else    
-                        {elemenComp.style.cssText="background:gray;";}
-
-                    console.log(playerComputer.playturn(playerHuman,0,0));    
                 })
             }
         }
