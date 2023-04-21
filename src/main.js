@@ -66,8 +66,10 @@ function gameLoop() {
         else{
             if(value[2]=='H')
             {
-                currentTurn='C';
-                console.log("currenturn inside:"+currentTurn)
+                currentTurn='C';//seeting turn
+                let lineTurn=document.getElementById("lineTurn");                                            
+                lineTurn.innerHTML="<p>Turn: Computer</p>"
+                
                 let elemenComp=document.getElementById("CompEl_"+value[0]+"_"+value[1]);                            
                 let returnedValue=playerHuman.playturn(playerComputer,value[0],value[1]); 
                 if(returnedValue==="hit")
@@ -78,6 +80,8 @@ function gameLoop() {
                 setTimeout(function(){
                     // console.log(playerComputer.playturn(playerHuman,0,0))
                         currentTurn='H';
+                        let lineTurn=document.getElementById("lineTurn");                                            
+                        lineTurn.innerHTML="<p>Turn: Player</p>"
                         console.log("timeout:"+currentTurn)
                         return;
                 }, 10000);                        

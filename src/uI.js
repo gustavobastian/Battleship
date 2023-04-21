@@ -29,7 +29,8 @@ const UI = function (turn) {
 
     let lineTurn=document.createElement("div");    
     lineTurn.className="lineTurn";
-    lineTurn.innerHTML="<p>Turn:"+turn+"</p>"
+    lineTurn.id="lineTurn";
+    lineTurn.innerHTML="<p>Turn: "+turn+"</p>"
     contentElement.appendChild(lineTurn);
 
 
