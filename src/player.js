@@ -7,7 +7,7 @@ const Player = function (name,xboard,yboard) {
     let previusMoves=[];
     let playerBoard = gameboard(xboard,yboard);
 
-    if(this.playerName=="computer"){
+    if(this.playerName=="Computer"){
         this.playerName="Computer";
         this.fillingBoard();
     }
@@ -16,19 +16,23 @@ const Player = function (name,xboard,yboard) {
         return playerBoard;
     }
     function fillingBoard(){
-        if(playerName=="computer")
+        if(playerName=="Computer")
             {
-                this.playerBoard.placeShip(1,1,2,"V");
-                this.playerBoard.placeShip(2,2,2,"V");
-                this.playerBoard.placeShip(3,2,1,"V");   
+                this.playerBoard.placeShip(1,0,2,"H");
+                this.playerBoard.placeShip(2,4,2,"H");
+                /*this.playerBoard.placeShip(8,5,1,"V");            
+                this.playerBoard.placeShip(3,5,2,"V"); 
+                this.playerBoard.placeShip(6,6,2,"V");  */
+                console.log("Computer")
                 this.playerBoard.printBoard();         
             }
         else{
             this.playerBoard.placeShip(0,0,2,"H");
             this.playerBoard.placeShip(2,3,2,"H");
-            this.playerBoard.placeShip(1,2,1,"V");            
+            /*this.playerBoard.placeShip(1,2,1,"V");            
             this.playerBoard.placeShip(5,5,2,"V"); 
-            this.playerBoard.placeShip(7,6,2,"V"); 
+            this.playerBoard.placeShip(7,6,2,"V"); */
+            console.log("Human")
             this.playerBoard.printBoard();
         }
         return "done";    

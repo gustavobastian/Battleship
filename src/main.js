@@ -87,9 +87,7 @@ function gameLoop() {
                             return;
                     }, 1000);                        
                 }
-                else{                   
-                   
-                                             
+                else{                        
                     let returnedValue=(playerComputer.playturn(playerHuman,0,0)); 
                     console.log("returned comp_:"+returnedValue)
                     let elemenPlay=document.getElementById("PlayerEl_"+returnedValue[1]+"_"+returnedValue[2]);   
@@ -97,15 +95,17 @@ function gameLoop() {
                         {elemenPlay.style.cssText="background:red;";}
                     else    
                         {elemenPlay.style.cssText="background:gray;";}
-
                 }
             }
         }    
-    winner=checkGame();
+    winner=checkGame();    
     if(winner!=0){
-        winner=0;
+        if(winner==2){winner="Player"}
+        if(winner==1){winner="Computer"}
+        
         if(alert==0){
             window.alert("winner "+winner+"!");
+            winner=0;
             alert=1;}
         setTimeout(function(){
             location.reload();
