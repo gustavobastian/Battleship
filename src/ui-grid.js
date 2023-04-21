@@ -1,27 +1,19 @@
 let player=require("./player.js")
 
-const uiGrid=function UiGrid() {
-    let playerComputer;
-    let playerHuman;
+const uiGrid=function UiGrid(playerComputer,playerHuman) {
     
-    function init(){
-        playerComputer=player("computer",10,10);
-        playerComputer.fillingBoard();
-        playerHuman=player("playerName",10,10);
-        playerHuman.fillingBoard();
-    }
-    function generateUI(){
-        this.init();
+    function generateUI(){        
         let gridElement = document.getElementById("player1-zone");
         gridElement.innerHTML="";
         gridElement.className = "gameGrid";
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
-                let elementLocal=document.createElement("button");        
-                elementLocal.id="button_"+i+"_"+j;
-                elementLocal.className="innerElement";
+                let elementLocalPlayer=document.createElement("div");        
+                elementLocalPlayer.id="button_"+i+"_"+j;
+                elementLocalPlayer.className="innerElementPlayer";
+                
                /* if(playerHuman.game)*/
-                gridElement.appendChild(elementLocal);
+                gridElement.appendChild(elementLocalPlayer);
             }
         }
 
@@ -45,23 +37,22 @@ const uiGrid=function UiGrid() {
     function addListener(){
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
-                let elementLocal=document.getElementById("button_"+i+"_"+j);        
+                let elementLocal=document.getElementById("CompEl_"+i+"_"+j);        
                 elementLocal.addEventListener("click",function(e){
                     console.log("button "+i+"|"+j +" pressed!");
                     let elemenComp=document.getElementById("CompEl_"+i+"_"+j);        
-                   // console.log(playerHuman.playturn(playerComputer,i,j))
                     
-                    //elemenComp.innerText="X";
                     if(playerHuman.playturn(playerComputer,i,j) == "hit")
                         {elemenComp.style.cssText="background:red;";}
                     else    
                         {elemenComp.style.cssText="background:gray;";}
+
+                    console.log(playerComputer.playturn(playerHuman,0,0));    
                 })
             }
         }
     }
-    return {
-        init,
+    return {        
         generateUI,
         addListener
 

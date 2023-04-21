@@ -89,3 +89,8 @@ button{
     justify-content: center;
     
 }
+.innerElementPlayer{
+    height: 30px;
+    border:solid;
+    background:rgb(1, 179, 179);
+}
