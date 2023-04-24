@@ -20,6 +20,9 @@ module.exports = {
         },
         UiGrid:{
             import:'./src/ui-grid.js',
+        },
+        UiPlayer:{
+            import:'./src/ui-player.js',
         }
         
     },

@@ -9,6 +9,12 @@ const UI = function (turn,playerName) {
     header.innerText="Battleship GAME";
     contentElement.appendChild(header);
 
+    let insertShip=document.createElement("div");        
+    insertShip.id="insertShip";
+    contentElement.appendChild(insertShip);   
+
+
+
     let playerForm=document.createElement("div");    
     playerForm.className="playerForm";
 
@@ -26,6 +32,15 @@ const UI = function (turn,playerName) {
     resetGame.innerText="Reset";        
     playerForm.appendChild(resetGame);
 
+     
+
+    
+
+
+
+    
+
+    
     contentElement.appendChild(playerForm);
 
     let lineTurn=document.createElement("div");    
@@ -33,10 +48,6 @@ const UI = function (turn,playerName) {
     lineTurn.id="lineTurn";
     lineTurn.innerHTML="<p>Turn: "+turn+"</p>"
     contentElement.appendChild(lineTurn);
-
-    let insertShip=document.createElement("div");        
-    insertShip.id="insertShip";
-    contentElement.appendChild(insertShip);
 
 
     let playerZone=document.createElement("div");
@@ -47,6 +58,8 @@ const UI = function (turn,playerName) {
     let player2=document.createElement("div");
     player2.id="player2-zone";        
     playerZone.appendChild(player2);
+
+
     contentElement.appendChild(playerZone);
 
     function addNameListener(){

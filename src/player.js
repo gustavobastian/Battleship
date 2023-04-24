@@ -20,18 +20,12 @@ const Player = function (name,xboard,yboard) {
             {
                 this.playerBoard.placeShip(1,0,2,"H");
                 this.playerBoard.placeShip(2,4,2,"H");
-                /*this.playerBoard.placeShip(8,5,1,"V");            
-                this.playerBoard.placeShip(3,5,2,"V"); 
-                this.playerBoard.placeShip(6,6,2,"V");  */
                 console.log("Computer")
                 this.playerBoard.printBoard();         
             }
         else{
             this.playerBoard.placeShip(0,0,2,"H");
             this.playerBoard.placeShip(2,3,2,"H");
-            /*this.playerBoard.placeShip(1,2,1,"V");            
-            this.playerBoard.placeShip(5,5,2,"V"); 
-            this.playerBoard.placeShip(7,6,2,"V"); */
             console.log("Human")
             this.playerBoard.printBoard();
         }

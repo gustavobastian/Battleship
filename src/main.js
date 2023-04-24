@@ -2,6 +2,7 @@ import './style.css';
 let ui =require("./uI.js")
 let uiGrid =require("./ui-grid.js")
 let player=require("./player.js")
+let UIplayer =require("./ui-player.js")
 
 
 let winner=0;
@@ -14,6 +15,8 @@ let componentUi=ui("Player",playerName);
 document.body.appendChild(componentUi.contentElement);
 componentUi.addNameListener();
 
+//let UIplayerLocal=UIplayer();
+//document.body.appendChild(UIplayerLocal);
 let movementsStack=[];
 //
 
