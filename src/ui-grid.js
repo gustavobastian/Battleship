@@ -11,6 +11,9 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
                 let elementLocalPlayer=document.createElement("div");        
                 elementLocalPlayer.id="PlayerEl_"+i+"_"+j;
                 elementLocalPlayer.className="innerElementPlayer";
+                if((playerComputer.playerBoard.gameBoard[i][j])!="F"){
+                    elementLocalPlayer.style.cssText="background:green!important;";
+                }
                 
                /* if(playerHuman.game)*/
                 gridElement.appendChild(elementLocalPlayer);
