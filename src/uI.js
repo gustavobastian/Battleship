@@ -1,6 +1,6 @@
 
-const UI = function (turn) {
-    console.log("here")
+const UI = function (turn,playerName) {
+    
     let contentElement=document.createElement('div') 
     contentElement.className="mainContent";
     
@@ -18,6 +18,7 @@ const UI = function (turn) {
     playerForm.appendChild(labelName);
     let inputName=document.createElement("input")
     inputName.className="inputName";    
+    inputName.id="inputName"; 
     playerForm.appendChild(inputName);
     let resetGame=document.createElement("button")
     resetGame.className="resetGame";
@@ -33,6 +34,10 @@ const UI = function (turn) {
     lineTurn.innerHTML="<p>Turn: "+turn+"</p>"
     contentElement.appendChild(lineTurn);
 
+    let insertShip=document.createElement("div");        
+    insertShip.id="insertShip";
+    contentElement.appendChild(insertShip);
+
 
     let playerZone=document.createElement("div");
     playerZone.className= "playerZone";
@@ -43,8 +48,20 @@ const UI = function (turn) {
     player2.id="player2-zone";        
     playerZone.appendChild(player2);
     contentElement.appendChild(playerZone);
-    return contentElement;
+
+    function addNameListener(){
+        let element= document.getElementById('inputName');
+        element.addEventListener("change",()=>{
+            playerName=element.value;
+            console.log(playerName);
+        })
+    }
+    return {
+        contentElement,
+        addNameListener
+    };
 }
+
 
 
 module.exports=UI

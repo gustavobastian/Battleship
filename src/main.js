@@ -7,10 +7,13 @@ let player=require("./player.js")
 let winner=0;
 
 let currentTurn="H";
+let playerName="";
 
 //adding main component
-let component=ui("Player");
-document.body.appendChild(component);
+let componentUi=ui("Player",playerName);
+document.body.appendChild(componentUi.contentElement);
+componentUi.addNameListener();
+
 let movementsStack=[];
 //
 
@@ -102,9 +105,10 @@ function gameLoop() {
     if(winner!=0){
         if(winner==2){winner="Player"}
         if(winner==1){winner="Computer"}
+        let element= document.getElementById('inputName');
         
         if(alert==0){
-            window.alert("winner "+winner+"!");
+            window.alert("winner "+element.value+"!");
             winner=0;
             alert=1;}
         setTimeout(function(){
