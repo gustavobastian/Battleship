@@ -1,5 +1,7 @@
 const player = require("./player.js")
 
+const maxPlacedShip=3;
+
 const UIplayer = function (playerP=null) {
     
     let localplayer= new player();
@@ -8,6 +10,7 @@ const UIplayer = function (playerP=null) {
     ships.push([0,0,"V"])
     ships.push([1,0,"V"])
     ships.push([2,0,"V"])
+    let numberOfShipsPlaced=0;
 
     console.log("here:"+JSON.stringify(ships));
 
@@ -81,8 +84,24 @@ const UIplayer = function (playerP=null) {
             let element=document.getElementById("button_"+i);
             element.addEventListener("click",(e)=>{
                 console.log("clicked button "+ i)
+                localplayer.playerBoard.printBoard();
                 //this.close();
                 console.log(JSON.stringify(ships[i-1]));
+                if(localplayer.playerBoard.placeShip(parseInt((ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2]))==false){
+                    window.alert("already occupied or out of grid");
+                }
+                else{
+                    let elementX=document.getElementById("Xinput_"+i);
+                    elementX.readOnly = true;
+                    let elementY=document.getElementById("Yinput_"+i);
+                    elementY.readOnly = true;
+                    let elementZ=document.getElementById("Orientation_"+i);
+                    elementZ.readOnly = true;
+                    numberOfShipsPlaced++;
+                    if(numberOfShipsPlaced===maxPlacedShip){
+                        this.close();
+                    }
+                }
             })
             let elementInput=document.getElementById("Xinput_"+i);
             elementInput.addEventListener("change",(e)=>{                

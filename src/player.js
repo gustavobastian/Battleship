@@ -25,10 +25,10 @@ const Player = function (name,xboard,yboard) {
                 return "done";          
             }
         else{
-            this.playerBoard.placeShip(0,0,2,"H");
+           /* this.playerBoard.placeShip(0,0,2,"H");
             this.playerBoard.placeShip(2,3,2,"H");
             console.log("Human")
-            this.playerBoard.printBoard();
+            this.playerBoard.printBoard();*/
             return "not done";   
         }
          
