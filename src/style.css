@@ -1,12 +1,12 @@
 *{
     background: rgb(98, 98, 243);
-    font-family: 'New Century Schoolbook', 'URW Bookman L', serif;
+    font-family: 'New Century Schoolbook', 'URW Bookman L', serif;    
 }
 
 
 #mainContent{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     background: transparent;
     width: 100%;
     height: 200px;
@@ -16,7 +16,7 @@
 }
 .Header{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-self: center;
     align-items: center;
     justify-content: space-around;
@@ -56,7 +56,7 @@
     background:gold;
     color:black;
     width: 20%;
-    height: 25%;
+    height: 75%;
     box-shadow: 0px 0px 15px 0px black;
     margin-left: 15px;
 }
@@ -105,19 +105,17 @@ button{
 }
 
 .insertShip{
-    display: grid;
-    resize:both;
-    grid-template-columns:  100%;
-    grid-template-rows: auto;
-    margin-top: 20px;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    margin-top: -80px;
     margin-bottom: 10px;
+    align-items: center;
 }
 .lineShip{
-    display: grid;
-    resize:both;
-    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10%;
-    grid-template-rows: 100%;
-    height: 25px;
+    display: flex;
+    flex-direction: row;    
+    height: 25px;    
     font-size: auto;    
     padding-top:0px;
     padding-bottom:0px;
@@ -127,4 +125,8 @@ p{
     margin-top: 0px;
     margin-right: 5px;
     margin-left: 5px;
+}
+input{
+    background: rgb(204, 202, 202);
+    width: 30px;
 }

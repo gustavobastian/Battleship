@@ -21,15 +21,17 @@ const Player = function (name,xboard,yboard) {
                 this.playerBoard.placeShip(1,0,2,"H");
                 this.playerBoard.placeShip(2,4,2,"H");
                 console.log("Computer")
-                this.playerBoard.printBoard();         
+                this.playerBoard.printBoard();  
+                return "done";          
             }
         else{
             this.playerBoard.placeShip(0,0,2,"H");
             this.playerBoard.placeShip(2,3,2,"H");
             console.log("Human")
             this.playerBoard.printBoard();
+            return "not done";   
         }
-        return "done";    
+         
     };
     
 

@@ -15,16 +15,22 @@ let componentUi=ui("Player",playerName);
 document.body.appendChild(componentUi.contentElement);
 componentUi.addNameListener();
 
-//let UIplayerLocal=UIplayer();
-//document.body.appendChild(UIplayerLocal);
+
 let movementsStack=[];
 //
+
 
 let playerComputer=player("Computer",10,10);
 playerComputer.fillingBoard();
 let playerHuman=player("playerName",10,10);
-playerHuman.fillingBoard();
+let UIplayerLocal=UIplayer(playerHuman);
+document.body.appendChild(UIplayerLocal.contentElement);
+UIplayerLocal.addListeners();
+/*
+*/
 
+if (playerHuman.fillingBoard()=="done"){
+    
 
 //initializing ui
 function init(){
@@ -121,3 +127,5 @@ function gameLoop() {
     }
     window.requestAnimationFrame(gameLoop);
 }
+
+};

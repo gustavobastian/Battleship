@@ -1,92 +1,116 @@
-const UIplayer = function (turn) {
-    console.log("here")
+const player = require("./player.js")
+
+const UIplayer = function (playerP=null) {
+    
+    let localplayer= new player();
+    localplayer=playerP;
+    let ships=[];
+    ships.push([0,0,"V"])
+    ships.push([1,0,"V"])
+    ships.push([2,0,"V"])
+
+    console.log("here:"+JSON.stringify(ships));
+
     let contentElement=document.getElementById('insertShip'); 
     contentElement.className="insertShip";
-    let lineShip1=document.createElement('div');
-    lineShip1.className="lineShip";
-    lineShip1.id="lineShip1";
-    let lineShip2=document.createElement('div');
-    lineShip2.className="lineShip";
-    lineShip2.id="lineShip2";
-    let lineShip3=document.createElement('div');
-    lineShip3.className="lineShip";
-    lineShip3.id="lineShip3";
     
-    let xLabel=document.createElement('p');
-    xLabel.innerText="X:"
-    let yLabel=document.createElement('p');
-    yLabel.innerText="Y:"
-    let sizeLabel=document.createElement('p');
-    sizeLabel.innerText="Size:";
-    let sizeValue=document.createElement('p');
-    sizeValue.innerText="3";
-    let orientationLabel=document.createElement('p');
-    orientationLabel.innerText="Or:";
+    for(let i=1;i<4;i++){
+        let lineShip1=document.createElement('div');
+        lineShip1.className="lineShip";
+        lineShip1.id="lineShip"+i;
+        let xLabel=document.createElement('p');
+        xLabel.innerText="X:"
+        let yLabel=document.createElement('p');
+        yLabel.innerText="Y:"
+        let sizeLabel=document.createElement('p');
+        sizeLabel.innerText="Size:";
+        let sizeValue=document.createElement('p');
+        sizeValue.innerText="3";
+        let orientationLabel=document.createElement('p');
+        orientationLabel.innerText="Or:";
+        let button1=document.createElement('button');
+        button1.className="buttonAccept"
+        button1.id="button_"+i;
+        button1.innerText="Accept"
+
+        let xInput1=document.createElement('input');
+        xInput1.placeholder="0";
+        xInput1.id="Xinput_"+i;
+        lineShip1.appendChild(xInput1);
+        lineShip1.appendChild(yLabel);
+        let yInput1=document.createElement('input');    
+        yInput1.placeholder="0";
+        yInput1.id="Yinput_"+i;
+        lineShip1.appendChild(yInput1);
+        lineShip1.appendChild(orientationLabel)
+        let orientationInput1=document.createElement('select');
+        
+        orientationInput1.placeholder="V";
+        orientationInput1.id="Orientation_"+i;
+        let option1=document.createElement('option');
+        option1.text="V";
+        option1.value="V";
+        orientationInput1.appendChild(option1);        
+        let option2=document.createElement('option');
+        option2.text="H";
+        option2.value="H";
+        orientationInput1.appendChild(option2);
+        lineShip1.appendChild(orientationInput1);
+        
+        lineShip1.appendChild(orientationInput1);    
+        lineShip1.appendChild(sizeLabel);
+        lineShip1.appendChild(sizeValue);
+        lineShip1.appendChild(button1);
+        contentElement.appendChild(lineShip1);
+        
+
+    }
 
 
-    let xLabel2=document.createElement('p');
-    xLabel2.innerText="X:";
-    let yLabel2=document.createElement('p');
-    yLabel2.innerText="Y:";
-    let sizeLabel2=document.createElement('p');
-    sizeLabel2.innerText="Size:";
-    let sizeValue2=document.createElement('p');
-    sizeValue2.innerText="3";
-    let orientationLabel2=document.createElement('p');
-    orientationLabel2.innerText="Or:";
-
-    let xLabel3=document.createElement('p');
-    xLabel3.innerText="X:";
-    let yLabel3=document.createElement('p');
-    yLabel3.innerText="Y:";
-    let sizeLabel3=document.createElement('p');
-    sizeLabel3.innerText="Size:";
-    let sizeValue3=document.createElement('p');
-    sizeValue3.innerText="3";
-    let orientationLabel3=document.createElement('p');
-    orientationLabel3.innerText="Or:";
+        
     
-    
-    lineShip1.appendChild(xLabel);
-    let xInput1=document.createElement('input');
-    lineShip1.appendChild(xInput1);
-    lineShip1.appendChild(yLabel);
-    let yInput1=document.createElement('input');    
-    lineShip1.appendChild(yInput1);
-    lineShip1.appendChild(orientationLabel)
-    let orientationInput1=document.createElement('input');
-    lineShip1.appendChild(orientationInput1);
-    lineShip1.appendChild(sizeLabel);
-    lineShip1.appendChild(sizeValue);
-    contentElement.appendChild(lineShip1);
-    
-    lineShip2.appendChild(xLabel2);
-    let xInput2=document.createElement('input');
-    lineShip2.appendChild(xInput2);
-    lineShip2.appendChild(yLabel2);
-    let yInput2=document.createElement('input');    
-    lineShip2.appendChild(yInput2);
-    lineShip2.appendChild(orientationLabel2)
-    let orientationInput2=document.createElement('input');
-    lineShip2.appendChild(orientationInput2);
-    lineShip2.appendChild(sizeLabel2);
-    lineShip2.appendChild(sizeValue2);
-    contentElement.appendChild(lineShip2);
 
-    lineShip3.appendChild(xLabel3);
-    let xInput3=document.createElement('input');
-    lineShip3.appendChild(xInput3);
-    lineShip3.appendChild(yLabel3);
-    let yInput3=document.createElement('input');    
-    lineShip3.appendChild(yInput3);
-    lineShip3.appendChild(orientationLabel3);
-    let orientationInput3=document.createElement('input');
-    lineShip3.appendChild(orientationInput3);
-    lineShip3.appendChild(sizeLabel3);
-    lineShip3.appendChild(sizeValue3);
-    contentElement.appendChild(lineShip3);
+    function addListeners(){        
+        let elementReset=document.getElementById("resetGame");
+        elementReset.addEventListener("click",(e)=>{
+            console.log("reset");
+            location.reload();
+        })
 
+        for (let i=1;i<4;i++){
+            let element=document.getElementById("button_"+i);
+            element.addEventListener("click",(e)=>{
+                console.log("clicked button "+ i)
+                //this.close();
+                console.log(JSON.stringify(ships[i-1]));
+            })
+            let elementInput=document.getElementById("Xinput_"+i);
+            elementInput.addEventListener("change",(e)=>{                
+                ships[i-1][0]=e.target.value;
+            })
+            let elementInput2=document.getElementById("Yinput_"+i);
+            elementInput2.addEventListener("change",(e)=>{                
+                ships[i-1][1]=e.target.value;
+            })
+            let elementInput3=document.getElementById("Orientation_"+i);
+            elementInput3.addEventListener("change",(e)=>{                
+                ships[i-1][2]=e.target.value;
+            })
+        }
+        
 
-    return contentElement;
+    }
+
+    function close(){
+        let Element=document.getElementById('insertShip');         
+        console.log(JSON.stringify(Element))
+        Element.innerHTML=""
+    }
+
+    return {
+        contentElement,
+        addListeners,
+        close
+    };
 }
 module.exports = UIplayer

@@ -3,6 +3,7 @@ const UI = function (turn,playerName) {
     
     let contentElement=document.createElement('div') 
     contentElement.className="mainContent";
+    contentElement.id="mainContent";
     
     let header=document.createElement("div");
     header.className="Header";
@@ -31,16 +32,6 @@ const UI = function (turn,playerName) {
     resetGame.id="resetGame";
     resetGame.innerText="Reset";        
     playerForm.appendChild(resetGame);
-
-     
-
-    
-
-
-
-    
-
-    
     contentElement.appendChild(playerForm);
 
     let lineTurn=document.createElement("div");    
