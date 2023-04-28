@@ -11,7 +11,7 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
                 let elementLocalPlayer=document.createElement("div");        
                 elementLocalPlayer.id="PlayerEl_"+i+"_"+j;
                 elementLocalPlayer.className="innerElementPlayer";
-                if((playerComputer.playerBoard.gameBoard[i][j])!="F"){
+                if((playerHuman.playerBoard.gameBoard[i][j])!="F"){
                     elementLocalPlayer.style.cssText="background:green!important;";
                 }
                 
@@ -40,17 +40,30 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
     function addListener(movementsStack){
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
-                let elementLocal=document.getElementById("CompEl_"+i+"_"+j);        
+                let elementLocal=document.getElementById("CompEl_"+(i)+"_"+(j));        
                 elementLocal.addEventListener("click",function(e){
                     console.log("button "+i+"|"+j +" pressed!");
                     movementsStack.push([i,j,"H"]);
-                    
+                    console.log(movementsStack)
                 })
             }
         }
     }
+
+    function refreshUi(){
+        for (let i=0;i<10;i++){
+            for (let j=0;j<10;j++){
+                if((playerHuman.playerBoard.gameBoard[i][j])!="F"){
+                    let elementLocalPlayer=document.getElementById("PlayerEl_"+(i)+"_"+(j));
+                    elementLocalPlayer.style.cssText="background:green!important;";
+                }
+            }
+        }
+    }
+
     return {        
         generateUI,
+        refreshUi,
         addListener
     };
 }

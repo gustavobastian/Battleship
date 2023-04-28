@@ -2,17 +2,23 @@
 const UI = function (turn,playerName) {
     
     let contentElement=document.createElement('div') 
+
+
     contentElement.className="mainContent";
     contentElement.id="mainContent";
+    contentElement.innerHTML="";
     
+
+    
+    
+
+
     let header=document.createElement("div");
     header.className="Header";
     header.innerText="Battleship GAME";
     contentElement.appendChild(header);
 
-    let insertShip=document.createElement("div");        
-    insertShip.id="insertShip";
-    contentElement.appendChild(insertShip);   
+    
 
 
 
@@ -53,6 +59,9 @@ const UI = function (turn,playerName) {
 
     contentElement.appendChild(playerZone);
 
+    let insertShip=document.createElement("div");        
+    insertShip.id="insertShip";
+
     function addNameListener(){
         let element= document.getElementById('inputName');
         element.addEventListener("change",()=>{
@@ -62,7 +71,8 @@ const UI = function (turn,playerName) {
     }
     return {
         contentElement,
-        addNameListener
+        addNameListener,
+        insertShip
     };
 }
 

@@ -22,9 +22,9 @@ const UIplayer = function (playerP=null) {
         lineShip1.className="lineShip";
         lineShip1.id="lineShip"+i;
         let xLabel=document.createElement('p');
-        xLabel.innerText="X:"
+        xLabel.innerText="Y:"
         let yLabel=document.createElement('p');
-        yLabel.innerText="Y:"
+        yLabel.innerText="X:"
         let sizeLabel=document.createElement('p');
         sizeLabel.innerText="Size:";
         let sizeValue=document.createElement('p');
@@ -36,6 +36,7 @@ const UIplayer = function (playerP=null) {
         button1.id="button_"+i;
         button1.innerText="Accept"
 
+        lineShip1.appendChild(xLabel);
         let xInput1=document.createElement('input');
         xInput1.placeholder="0";
         xInput1.id="Xinput_"+i;
@@ -51,14 +52,13 @@ const UIplayer = function (playerP=null) {
         orientationInput1.placeholder="V";
         orientationInput1.id="Orientation_"+i;
         let option1=document.createElement('option');
-        option1.text="V";
+        option1.text="H";
         option1.value="V";
         orientationInput1.appendChild(option1);        
         let option2=document.createElement('option');
-        option2.text="H";
+        option2.text="V";
         option2.value="H";
-        orientationInput1.appendChild(option2);
-        lineShip1.appendChild(orientationInput1);
+        orientationInput1.appendChild(option2);        
         
         lineShip1.appendChild(orientationInput1);    
         lineShip1.appendChild(sizeLabel);
@@ -87,7 +87,10 @@ const UIplayer = function (playerP=null) {
                 localplayer.playerBoard.printBoard();
                 //this.close();
                 console.log(JSON.stringify(ships[i-1]));
-                if(localplayer.playerBoard.placeShip(parseInt((ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2]))==false){
+                //if(localplayer.playerBoard.placeShip(parseInt((ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2]))==false){
+                    if(playerP.playerBoard.placeShip(
+                        parseInt(9-(ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2])
+                        )==false){
                     window.alert("already occupied or out of grid");
                 }
                 else{
@@ -100,6 +103,7 @@ const UIplayer = function (playerP=null) {
                     numberOfShipsPlaced++;
                     if(numberOfShipsPlaced===maxPlacedShip){
                         this.close();
+                        localplayer.fillingBoard()
                     }
                 }
             })
@@ -124,6 +128,8 @@ const UIplayer = function (playerP=null) {
         let Element=document.getElementById('insertShip');         
         console.log(JSON.stringify(Element))
         Element.innerHTML=""
+        Element.remove();
+
     }
 
     return {

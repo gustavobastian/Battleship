@@ -18,8 +18,9 @@ const Player = function (name,xboard,yboard) {
     function fillingBoard(){
         if(playerName=="Computer")
             {
-                this.playerBoard.placeShip(1,0,2,"H");
-                this.playerBoard.placeShip(2,4,2,"H");
+                this.playerBoard.placeShip(1,0,3,"H");
+                this.playerBoard.placeShip(2,4,3,"H");
+                this.playerBoard.placeShip(5,5,3,"V");
                 console.log("Computer")
                 this.playerBoard.printBoard();  
                 return "done";          
@@ -27,9 +28,15 @@ const Player = function (name,xboard,yboard) {
         else{
            /* this.playerBoard.placeShip(0,0,2,"H");
             this.playerBoard.placeShip(2,3,2,"H");
+            this.playerBoard.placeShip(5,5,3,"V");
             console.log("Human")
             this.playerBoard.printBoard();*/
-            return "not done";   
+            if(this.playerBoard.gameShips.length<3)
+                return "not done";   
+            else{
+                return "done";
+            }    
+            //return "done";
         }
          
     };
