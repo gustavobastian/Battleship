@@ -37,14 +37,21 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
         //adding listeners
                 
     }
-    function addListener(movementsStack){
+    function addListener(shootStack,placingStack=null){
         for (let i=0;i<10;i++){
             for (let j=0;j<10;j++){
                 let elementLocal=document.getElementById("CompEl_"+(i)+"_"+(j));        
                 elementLocal.addEventListener("click",function(e){
                     console.log("button "+i+"|"+j +" pressed!");
-                    movementsStack.push([i,j,"H"]);
-                    console.log(movementsStack)
+                    shootStack.push([i,j,"H"]);
+                    console.log("shootStack:"+JSON.stringify(shootStack));
+                })
+
+                let elementPlacementLocal=document.getElementById("PlayerEl_"+(i)+"_"+(j));        
+                elementPlacementLocal.addEventListener("click",function(e){
+                    console.log("button placement "+i+"|"+j +" pressed!");
+                    placingStack.push([i,j,"H"]);
+                    console.log("placingStack "+JSON.stringify(placingStack));
                 })
             }
         }

@@ -20,7 +20,8 @@ document.body.appendChild(componentUi.contentElement);
 componentUi.addNameListener();
 
 
-let movementsStack=[];
+let movementsStack=[];//array for receiving the place of the shot
+let placementStack=[];//array for receiving the place of the ship
 //
 
 
@@ -37,7 +38,7 @@ function init(){
 
     elementGrid= uiGrid.uiGrid(playerComputer,playerHuman);    
     elementGrid.generateUI();
-    elementGrid.addListener(movementsStack);
+    elementGrid.addListener(movementsStack,placementStack);
 }
 
 
