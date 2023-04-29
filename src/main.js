@@ -68,7 +68,7 @@ function checkGame(){
 let alert=0;
 let refreshingUi=false;
 
-function gameLoop() {
+function gameLoop() {    
     
     if (playerHuman.fillingBoard()=="done"){
             if(refreshingUi===false){
