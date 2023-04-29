@@ -47,7 +47,7 @@ init();
 //listener for resetting
 let general=document.getElementById('resetGame')
     general.addEventListener("click",function(){
-    document.location.reload();
+    window.location.reload();
 })
 
 function checkGame(){    
@@ -132,7 +132,7 @@ function gameLoop() {
                     winner=0;
                     alert=1;}
                 setTimeout(function(){
-                    document.location.reload();
+                    window.location.reload();
                 }, 1);    
                 
             }
