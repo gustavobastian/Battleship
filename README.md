@@ -9,3 +9,4 @@ STATUS(todo's):
 * better Winner message(currently window alert).
 * flexible size of ships (currently 3 blocks fixed).
 * flexible number of ships (currently only 3 ships).
+* better intelligence in computer.
