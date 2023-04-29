@@ -130,10 +130,7 @@ function gameLoop() {
                 if(alert==0){
                     window.alert("winner "+element.value+"!");
                     winner=0;
-                    alert=1;}
-                setTimeout(function(){
-                    window.location.reload();
-                }, 1);    
+                    alert=1;}                
                 
             }
         }
