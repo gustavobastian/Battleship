@@ -143,16 +143,14 @@ function gameLoop() {
                 valuePlacement=placementStack.pop();                    
                 console.log(valuePlacement[0]);
                 console.log(valuePlacement[1]);
-                for (let i=1;i<4;i++){
-                let elementX=document.getElementById("Xinput_"+i);
-                if(elementX.readOnly=="true"){
-                    continue;
-                }
+                
+                let elementX=document.getElementById("Xinput_"+1);                
                 elementX.value = 9-valuePlacement[1];
-                let elementY=document.getElementById("Yinput_"+i);
-                elementY.value = 9-valuePlacement[0];  
-                break;              
-                }                
+                let elementY=document.getElementById("Yinput_"+1);
+                elementY.value = 9-valuePlacement[0];                  
+
+                let elementButton=document.getElementById("button_1");                
+                elementButton.click();                
             }
             elementGrid.refreshUi();
             

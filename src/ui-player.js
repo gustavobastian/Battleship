@@ -64,8 +64,7 @@ const UIplayer = function (playerP=null) {
         lineShip1.appendChild(sizeLabel);
         lineShip1.appendChild(sizeValue);
         lineShip1.appendChild(button1);
-        contentElement.appendChild(lineShip1);
-        
+        contentElement.appendChild(lineShip1);        
 
     }
 
