@@ -132,7 +132,7 @@ function gameLoop() {
                     winner=0;
                     alert=1;}
                 setTimeout(function(){
-                    location.reload();
+                    document.location.reload();
                 }, 1);    
                 
             }
