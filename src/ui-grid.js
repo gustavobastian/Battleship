@@ -50,7 +50,7 @@ const uiGrid=function UiGrid(playerComputer,playerHuman) {
                 let elementPlacementLocal=document.getElementById("PlayerEl_"+(i)+"_"+(j));        
                 elementPlacementLocal.addEventListener("click",function(e){
                     console.log("button placement "+i+"|"+j +" pressed!");
-                    placingStack.push([i,j,"H"]);
+                    placingStack.push([9-j,i,"H"]);
                     console.log("placingStack "+JSON.stringify(placingStack));
                 })
             }

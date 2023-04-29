@@ -17,7 +17,7 @@ const UIplayer = function (playerP=null) {
     let contentElement=document.getElementById('insertShip'); 
     contentElement.className="insertShip";
     
-    for(let i=1;i<4;i++){
+    for(let i=1;i<2;i++){
         let lineShip1=document.createElement('div');
         lineShip1.className="lineShip";
         lineShip1.id="lineShip"+i;
@@ -80,25 +80,31 @@ const UIplayer = function (playerP=null) {
             location.reload();
         })
 
-        for (let i=1;i<4;i++){
+        for (let i=1;i<2;i++){
             let element=document.getElementById("button_"+i);
             element.addEventListener("click",(e)=>{
                 console.log("clicked button "+ i)
+                let elementX=document.getElementById("Xinput_"+i);
+                ships[i-1][0]=elementX.value;
+                
+                let elementY=document.getElementById("Yinput_"+i);
+                ships[i-1][1]=elementY.value;
+                
+                let elementZ=document.getElementById("Orientation_"+i);
+                ships[i-1][2]=elementZ.value;
+                
                 localplayer.playerBoard.printBoard();
                 //this.close();
                 console.log(JSON.stringify(ships[i-1]));
                 //if(localplayer.playerBoard.placeShip(parseInt((ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2]))==false){
-                    if(playerP.playerBoard.placeShip(
+                if(playerP.playerBoard.placeShip(
                         parseInt(9-(ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2])
                         )==false){
                     window.alert("already occupied or out of grid");
                 }
                 else{
-                    let elementX=document.getElementById("Xinput_"+i);
                     elementX.readOnly = true;
-                    let elementY=document.getElementById("Yinput_"+i);
                     elementY.readOnly = true;
-                    let elementZ=document.getElementById("Orientation_"+i);
                     elementZ.readOnly = true;
                     numberOfShipsPlaced++;
                     if(numberOfShipsPlaced===maxPlacedShip){

@@ -72,6 +72,7 @@ function gameLoop() {
     
     if (playerHuman.fillingBoard()=="done"){
             if(refreshingUi===false){
+                
                 elementGrid.refreshUi();
                 refreshingUi=true;
             }
@@ -137,7 +138,24 @@ function gameLoop() {
             }
         }
         else{
+            if(placementStack.length>0){
+                let valuePlacement=[];
+                valuePlacement=placementStack.pop();                    
+                console.log(valuePlacement[0]);
+                console.log(valuePlacement[1]);
+                for (let i=1;i<4;i++){
+                let elementX=document.getElementById("Xinput_"+i);
+                if(elementX.readOnly=="true"){
+                    continue;
+                }
+                elementX.value = 9-valuePlacement[1];
+                let elementY=document.getElementById("Yinput_"+i);
+                elementY.value = 9-valuePlacement[0];  
+                break;              
+                }                
+            }
             elementGrid.refreshUi();
+            
         }
         window.requestAnimationFrame(gameLoop);
             
