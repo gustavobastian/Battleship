@@ -47,7 +47,7 @@ init();
 //listener for resetting
 let general=document.getElementById('resetGame')
     general.addEventListener("click",function(){
-    init();
+    document.location.reload();
 })
 
 function checkGame(){    
