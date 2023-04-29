@@ -74,6 +74,7 @@
     grid-template-columns: repeat(10, 2fr);
     grid-auto-rows: 30px;
     border-style: solid;
+    border-width: 0.1px;
     margin-left: 10px;
     margin-right: 10px;
     background:rgb(216, 214, 214);
@@ -86,7 +87,8 @@ button{
 }
 .innerElementComp{
     height: 30px;
-    border:solid;
+    border-style:solid;
+    border-width: 0.1px;
 }
 .compEl{
     display: flex;
@@ -96,12 +98,15 @@ button{
     height: 50px;
     text-align: center;
     justify-content: center;
+    border-style:solid;
+    border-width: 0.1px;
     
 }
 .innerElementPlayer{
-    height: 30px;
-    border:solid;
+    height: 30px;    
     background:rgb(1, 179, 179);
+    border-style:solid;
+    border-width: 0.1px;
 }
 .lineTurn{
     display:flex;
