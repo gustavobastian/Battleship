@@ -1,6 +1,6 @@
 const player = require("./player.js")
 
-const maxPlacedShip=3;
+const maxPlacedShip=4;
 
 const UIplayer = function (playerP=null) {
     
@@ -27,8 +27,10 @@ const UIplayer = function (playerP=null) {
         yLabel.innerText="X:"
         let sizeLabel=document.createElement('p');
         sizeLabel.innerText="Size:";
-        let sizeValue=document.createElement('p');
-        sizeValue.innerText="3";
+        let sizeValue=document.createElement('input');
+        sizeValue.readOnly=true;
+        sizeValue.id="sizeValue"+i;
+        sizeValue.value=maxPlacedShip;
         let orientationLabel=document.createElement('p');
         orientationLabel.innerText="Or:";
         let button1=document.createElement('button');
@@ -91,22 +93,28 @@ const UIplayer = function (playerP=null) {
                 
                 let elementZ=document.getElementById("Orientation_"+i);
                 ships[i-1][2]=elementZ.value;
+
+                let elementD=document.getElementById("sizeValue"+i);
+                let sizeShip=parseInt(elementD.value);
                 
                 localplayer.playerBoard.printBoard();
                 //this.close();
                 console.log(JSON.stringify(ships[i-1]));
+                console.log("element:"+elementD.value)
                 //if(localplayer.playerBoard.placeShip(parseInt((ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2]))==false){
                 if(playerP.playerBoard.placeShip(
-                        parseInt(9-(ships[i-1])[0]),parseInt((ships[i-1])[1]),3,((ships[i-1])[2])
-                        )==false){
+                        parseInt(9-(ships[i-1])[0]),parseInt((ships[i-1])[1]),sizeShip,((ships[i-1])[2])
+                        )===false){
                     window.alert("already occupied or out of grid");
                 }
-                else{
-                    elementX.readOnly = true;
-                    elementY.readOnly = true;
-                    elementZ.readOnly = true;
+                else{                    
+                    
+                    
+                    elementD.value=maxPlacedShip-numberOfShipsPlaced-1;
+                    console.log("element post:"+elementD.value)
+                    
                     numberOfShipsPlaced++;
-                    if(numberOfShipsPlaced===maxPlacedShip){
+                    if(elementD.value==="0"){
                         this.close();
                         localplayer.fillingBoard()
                     }
