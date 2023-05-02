@@ -5,8 +5,6 @@ Battleship game for practicing TDD in the Odin Project.
 </div>
 STATUS(todo's):
 
-* random placement of computer ships(currently fixed).
 * better Winner message(currently window alert).
-* flexible size of ships (currently 3 blocks fixed).
-* flexible number of ships (currently only 3 ships).
+* flexible number of ships (currently only 4 ships).
 * better intelligence in computer.
