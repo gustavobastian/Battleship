@@ -27,7 +27,7 @@ let placementStack=[];//array for receiving the place of the ship
 
 let playerComputer=player("Computer",10,10);
 playerComputer.fillingBoard();
-let playerHuman=player("playerName",10,10);
+let playerHuman=player(componentUi.getPlayerName(),10,10);
 let UIplayerLocal=UIplayer(playerHuman);
 document.body.appendChild(UIplayerLocal.contentElement);
 UIplayerLocal.addListeners();
@@ -108,7 +108,7 @@ function gameLoop() {
                                     lineTurn.innerHTML="<p>Turn: Player</p>"
                                     console.log("timeout:"+currentTurn)
                                     return;
-                            }, 1000);                        
+                            }, delayInMilliseconds);                        
                         }
                         else{                        
                             let returnedValue=(playerComputer.playturn(playerHuman,0,0)); 
@@ -154,9 +154,4 @@ function gameLoop() {
         }
         window.requestAnimationFrame(gameLoop);
             
-        }    
-
-
-//};
-
-//gameLoop(movementsStack);
+}    

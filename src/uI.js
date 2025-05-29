@@ -1,5 +1,7 @@
 
-const UI = function (turn,playerName) {
+const UI = function (turn, initialPlayerName) {
+
+    let playerName = initialPlayerName;
     
     let contentElement=document.createElement('div') 
 
@@ -72,7 +74,8 @@ const UI = function (turn,playerName) {
     return {
         contentElement,
         addNameListener,
-        insertShip
+        insertShip,
+        getPlayerName: () => playerName
     };
 }
 
