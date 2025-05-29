@@ -83,10 +83,7 @@ function gameLoop() {
                 console.log("currentTurrn:"+currentTurn);
                 console.log(value[0]);
                 console.log(value[1]);
-                if(currentTurn!='H'){
-                    console.log("here")            
-                }
-                else{
+                if(currentTurn!='C'){                    
                         if(value[2]=='H')
                         {
                             currentTurn='C';//seeting turn

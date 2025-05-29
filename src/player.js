@@ -25,36 +25,30 @@ const Player = function (name,xboard,yboard) {
                     let x= parseInt(Math.floor(Math.random()*playerBoard.xlen));
                     let y= parseInt(Math.floor(Math.random()*playerBoard.ylen)); 
                     let d=parseInt(Math.floor(Math.random()*2)); 
-                    let position="V";
+                    let position;
                     if(d==0){
                         position="H";
                         console.log("horizontal");
+                        if(this.playerBoard.placeShip(x,y,index,position)===true){
+                            index--;
+                        }
                     }
                     else{
                         position="V";
                         console.log("vertical");
+                        if(this.playerBoard.placeShip(x,y,index,position)===true){
+                            index--;
+                        }
                     }
-                    if(this.playerBoard.placeShip(x,y,index,position)===true){
-                        index--;
-                    }
+                   
                 }
-                /*this.playerBoard.placeShip(1,0,numberShip,"H");
-                this.playerBoard.placeShip(2,4,numberShip-1,"H");
-                this.playerBoard.placeShip(5,5,numberShip-2,"V");
-                this.playerBoard.placeShip(7,5,numberShip-3,"V");*/
 
                 console.log("Computer")
                 this.playerBoard.printBoard();  
                 return "done";          
             }
         else{           
-            if(this.playerBoard.gameShips.length<numberShip)
-                return "not done";   
-            else{
-              
-                return "done";
-            }    
-            
+            return (this.playerBoard.gameShips.length < numberShip) ? "not done" : "done";            
         }
          
     };
